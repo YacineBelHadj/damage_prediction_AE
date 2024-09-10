@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "damage-prediction-ae"
+version = "0.1.0"
+description = ""
+authors = ["Yacine Bel-Hadj <yacine.bel-hadj@vub.be>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dynaconf = "^3.2.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
