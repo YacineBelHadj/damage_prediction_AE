@@ -1,0 +1,20 @@
+[PATH]
+raw='/media/owilab/7759343A6EC07E1C'
+processed= '@format /{env[HOME]}/data/processed'
+mlflow='@format /{env[HOME]}/logs/mlflow'
+[NORTHER]
+fleet_leader = ["NRTC01", "NRTC03", "NRTH01", "NRTF03", "NRTJ03"]
+turbine_list = ["NRTA01","NRTA02","NRTA03","NRTA04",
+"NRTB01","NRTB02","NRTB03","NRTB04",
+"NRTC01","NRTC02","NRTC03","NRTC04",
+"NRTD01","NRTA02","NRTA03","NRTA04",
+"NRTE01","NRTE02","NRTE03","NRTE04",
+"NRTF01","NRTF02","NRTF03","NRTF04",
+"NRTG01","NRTG02","NRTG03","NRTG04",
+"NRTH01","NRTH02","NRTH03","NRTH04",
+"NRTI01","NRTI02","NRTI03","NRTI04",
+"NRTJ01","NRTJ02","NRTJ03","NRTJ04",
+"NRTK01","NRTK02","NRTK03","NRTK04",]
+sensor_direction = ['X', 'Y', 'Z']
+training_start = '2023-01-01'
+training_end = '2024-01-01'
