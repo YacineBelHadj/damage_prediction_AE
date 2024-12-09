@@ -1,28 +1,4 @@
 CRUD_privileges,data_group,description,end_timestamp,location,metric,print_str,short_hand,site,start_timestamp,statistic,unit_str
-,scada,,3000-01-01T00:00:00Z,GRA5,max_R_A5_winddirection,Wind direction,winddirection,Rentel,2022-07-19T00:00:00Z,max,°
-,scada,,3000-01-01T00:00:00Z,GRA5,max_R_A5_power,Power,power,Rentel,2022-07-19T00:00:00Z,max,kW
-,scada,,3000-01-01T00:00:00Z,GRA5,max_R_A5_yaw,Yaw,yaw,Rentel,2022-07-19T00:00:00Z,max,°
-,scada,,3000-01-01T00:00:00Z,GRA5,max_R_A5_rpm,Rotor speed,rpm,Rentel,2022-07-19T00:00:00Z,max,
-,scada,,3000-01-01T00:00:00Z,GRA5,min_R_A5_winddirection,Wind direction,winddirection,Rentel,2022-07-19T00:00:00Z,min,°
-,scada,,3000-01-01T00:00:00Z,GRA5,std_R_A5_pitch,Pitch,pitch,Rentel,2022-07-19T00:00:00Z,std,°
-,scada,,3000-01-01T00:00:00Z,GRA5,std_R_A5_rpm,Rotor speed,rpm,Rentel,2022-07-19T00:00:00Z,std,
-,scada,,3000-01-01T00:00:00Z,GRA5,std_R_A5_windspeed,Wind speed,windspeed,Rentel,2022-07-19T00:00:00Z,std,m/s
-,scada,,3000-01-01T00:00:00Z,GRA5,mean_R_A5_pitch,Pitch,pitch,Rentel,2022-07-19T00:00:00Z,mean,°
-,scada,,3000-01-01T00:00:00Z,GRA5,mean_R_A5_rpm,Rotor speed,rpm,Rentel,2022-07-19T00:00:00Z,mean,
-,scada,,3000-01-01T00:00:00Z,GRA5,std_R_A5_winddirection,Wind direction,winddirection,Rentel,2022-07-19T00:00:00Z,std,°
-,scada,,3000-01-01T00:00:00Z,GRA5,min_R_A5_power,Power,power,Rentel,2022-07-19T00:00:00Z,min,kW
-,scada,,3000-01-01T00:00:00Z,GRA5,min_R_A5_pitch,Pitch,pitch,Rentel,2022-07-19T00:00:00Z,min,°
-,scada,,3000-01-01T00:00:00Z,GRA5,min_R_A5_yaw,Yaw,yaw,Rentel,2022-07-19T00:00:00Z,min,°
-,scada,,3000-01-01T00:00:00Z,GRA5,max_R_A5_pitch,Pitch,pitch,Rentel,2022-07-19T00:00:00Z,max,°
-,scada,,3000-01-01T00:00:00Z,GRA5,max_R_A5_windspeed,Wind speed,windspeed,Rentel,2022-07-19T00:00:00Z,max,m/s
-,scada,,3000-01-01T00:00:00Z,GRA5,mean_R_A5_winddirection,Wind direction,winddirection,Rentel,2022-07-19T00:00:00Z,mean,°
-,scada,,3000-01-01T00:00:00Z,GRA5,min_R_A5_windspeed,Wind speed,windspeed,Rentel,2022-07-19T00:00:00Z,min,m/s
-,scada,,3000-01-01T00:00:00Z,GRA5,mean_R_A5_yaw,Yaw,yaw,Rentel,2022-07-19T00:00:00Z,mean,°
-,scada,,3000-01-01T00:00:00Z,GRA5,std_R_A5_power,Power,power,Rentel,2022-07-19T00:00:00Z,std,kW
-,scada,,3000-01-01T00:00:00Z,GRA5,mean_R_A5_power,Power,power,Rentel,2022-07-19T00:00:00Z,mean,kW
-,scada,,3000-01-01T00:00:00Z,GRA5,std_R_A5_yaw,Yaw,yaw,Rentel,2022-07-19T00:00:00Z,std,°
-,scada,,3000-01-01T00:00:00Z,GRA5,mean_R_A5_windspeed,Wind speed,windspeed,Rentel,2022-07-19T00:00:00Z,mean,m/s
-,scada,,3000-01-01T00:00:00Z,GRA5,min_R_A5_rpm,Rotor speed,rpm,Rentel,2022-07-19T00:00:00Z,min,
 ,acceleration,std of accelerations measured at NRT_A01_NAC_ACC_SS,3000-01-01T00:00:00Z,NRTA01,std_NRT_A01_NAC_ACC_SS,NAC ACC SS,NAC_ACC_SS,Norther,2000-01-01T00:00:00Z,std,g
 ,acceleration,rms of accelerations measured at NRT_A01_NAC_ACC_FA,3000-01-01T00:00:00Z,NRTA01,rms_NRT_A01_NAC_ACC_FA,NAC ACC FA,NAC_ACC_FA,Norther,2000-01-01T00:00:00Z,rms,g
 ,acceleration,rms1p of accelerations measured at p_NRT_A01_NAC_ACC_SS,3000-01-01T00:00:00Z,NRTA01,rms1p_NRT_A01_NAC_ACC_SS,NAC ACC SS,NAC_ACC_SS,Norther,2000-01-01T00:00:00Z,rms1p,g
