@@ -66,7 +66,7 @@ SELECT
     melted.timestamp,
     melted.turbine_name,
     melted.Welch,
-    scada.DEM,
+    melted.DEM,
     scada.PredDEM
 FROM welch
 LEFT JOIN (
