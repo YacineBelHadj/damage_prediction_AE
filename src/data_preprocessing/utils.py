@@ -3,7 +3,7 @@ import re
 from datetime import datetime
 from functools import partial
 import numpy as np
-def is_path_excluded(path: str, exclude_words: list[str] = ["Trash"]) -> bool:
+def is_path_excluded(path: str, exclude_words: str = "Trash") -> bool:
     """
     Determines whether a file path should be excluded based on the presence of any excluded words.
 
@@ -19,16 +19,16 @@ def is_path_excluded(path: str, exclude_words: list[str] = ["Trash"]) -> bool:
 
     Examples:
         >>> is_path_excluded("/user/data/Trash/file1.txt")
-        True
+        False 
         >>> is_path_excluded("/user/data/file2.txt")
-        False
+        True
         >>> is_path_excluded("/user/temp/file3.txt", exclude_words=["trash", "temp"])
         True
         >>> is_path_excluded("/user/data/archive/file4.txt", exclude_words=["trash", "temp"])
         False
     """
-    path_lower = path.lower()
-    return any(word.lower() in path_lower for word in exclude_words)
+    # check if the Trash sequence is in the path
+    return not exclude_words.lower() in path.lower()
 
 
 def is_path_included(path: str, include_words: list[str] = []) -> bool:
@@ -54,8 +54,7 @@ def is_path_included(path: str, include_words: list[str] = []) -> bool:
         >>> is_path_included("/user/data/file2.txt")
         True
     """
-    if not include_words:
-        return True
+
     path_lower = path.lower()
     return any(word.lower() in path_lower for word in include_words)
                                     

@@ -1,21 +1,30 @@
-from torch import nn
+from torch.nn import Module
 import torch
 import numpy as np
 
+class ToTensor(Module):
+    def __init__(self, dtype=torch.float32):
+        super().__init__()
+        self.dtype = dtype
 
-class CutPSD(nn.Module):
+    def forward(self, x):
+        return torch.tensor(x, dtype=self.dtype)
+
+class CutPSD(Module):
     def __init__(self, freq_axis:torch.Tensor | np.ndarray, freq_range:tuple[int, int]):
-        super(CutPSD, self).__init__()
+        super().__init__()
         self.freq_axis = freq_axis  
         self.freq_range = freq_range
         self.freq_mask = (self.freq_axis >= self.freq_range[0]) & (self.freq_axis <= self.freq_range[1])
         
     def forward(self, psd:torch.Tensor):
-        return psd[self.freq_mask]
+        if psd.ndim == 1:
+            return psd[self.freq_mask]
+        return psd[:,self.freq_mask]
     
-class FromBuffer(nn.Module):
+class FromBuffer(Module):
     def __init__(self, dtype=np.float32):
-        super(FromBuffer, self).__init__()
+        super().__init__()
         self.dtype = dtype
 
     def forward(self, buffer):
@@ -23,9 +32,16 @@ class FromBuffer(nn.Module):
         array = np.copy(array)  # Make the array writable
         return torch.tensor(array)
     
-class EncoderBasedOnList(nn.Module):
+class LogTransform(Module):
+    def __init__(self):
+        super().__init__()
+        
+    def forward(self, x):
+        return torch.log(x)
+    
+class EncoderBasedOnList(Module):
     def __init__(self, list_of_elements: list = None, encode: bool = True):
-        super(EncoderBasedOnList, self).__init__()
+        super().__init__()
         self.encode = encode
         self.list_of_elements = list_of_elements
         self.forward_func = {True: self.fw_encode, False: self.fw_decode}
@@ -39,9 +55,10 @@ class EncoderBasedOnList(nn.Module):
         def forward(self, element):
             return torch.tensor(self.forward_func[self.encode](element))
 
-class NormLayer(nn.Module):
-    def __init__(self, max_val, min_val, denormalize=False):
-        super(NormLayer, self).__init__()
+class NormLayer(Module):
+    def __init__(self, max_val, min_val, denormalize=False,dtypes=torch.float32):
+        super().__init__()
+        self.dtypes = dtypes
         self.register_buffer('max', self._to_tensor(max_val))
         self.register_buffer('min', self._to_tensor(min_val))
         self.denormalize = denormalize
@@ -58,7 +75,23 @@ class NormLayer(nn.Module):
         if isinstance(val, torch.Tensor):
             return val.clone().detach()
         else:
-            return torch.tensor(val, dtype=torch.float32)
+            return torch.tensor(val, dtype=self.dtypes)
         
         
-        
+class UnsqueezeLayer(Module):
+    def __init__(self, dim=1):
+        super().__init__()
+        self.dim = dim
+
+    def forward(self, x):
+        x = x.unsqueeze(self.dim)
+        return x
+
+class SqueezeLayer(Module):
+    def __init__(self, dim=1):
+        super().__init__()
+        self.dim = dim
+
+    def forward(self, x):
+        x = x.squeeze(self.dim)
+        return x
