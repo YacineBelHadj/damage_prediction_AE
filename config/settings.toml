@@ -1,7 +1,8 @@
 [PATH]
 raw='/media/owilab/7759343A6EC07E1C'
-processed= '@format /{env[HOME]}/data/processed'
+processed='@format /{env[HOME]}/data/processed'
 mlflow='@format /{env[HOME]}/logs/mlflow'
+scada='@format /{env[HOME]}/data/raw'
 [NORTHER]
 fleet_leader = ["NRTC01", "NRTC03", "NRTH01", "NRTF03", "NRTJ03"]
 turbine_list = ["NRTA01","NRTA02","NRTA03","NRTA04",
