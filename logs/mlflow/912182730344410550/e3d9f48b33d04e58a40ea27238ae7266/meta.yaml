@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/fdenolas/OneDrive - Vrije Universiteit Brussel/Uni/[06]Code/[09]AE_acceleration/damage_prediction_AE/logs/mlflow/912182730344410550/e3d9f48b33d04e58a40ea27238ae7266/artifacts
+end_time: 1734009168079
+entry_point_name: ''
+experiment_id: '912182730344410550'
+lifecycle_stage: active
+run_id: e3d9f48b33d04e58a40ea27238ae7266
+run_name: upset-gnat-348
+run_uuid: e3d9f48b33d04e58a40ea27238ae7266
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734008845096
+status: 4
+tags: []
+user_id: fdenolas

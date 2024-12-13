@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/fdenolas/OneDrive - Vrije Universiteit Brussel/Uni/[06]Code/[09]AE_acceleration/damage_prediction_AE/logs/mlflow/912182730344410550/bc184ef673854b2289d83b2a91cd1783/artifacts
+end_time: 1734008059643
+entry_point_name: ''
+experiment_id: '912182730344410550'
+lifecycle_stage: active
+run_id: bc184ef673854b2289d83b2a91cd1783
+run_name: awesome-finch-89
+run_uuid: bc184ef673854b2289d83b2a91cd1783
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734008050737
+status: 4
+tags: []
+user_id: fdenolas

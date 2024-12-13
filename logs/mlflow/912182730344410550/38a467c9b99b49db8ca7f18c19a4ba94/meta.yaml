@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/fdenolas/OneDrive - Vrije Universiteit Brussel/Uni/[06]Code/[09]AE_acceleration/damage_prediction_AE/logs/mlflow/912182730344410550/38a467c9b99b49db8ca7f18c19a4ba94/artifacts
+end_time: 1734009179837
+entry_point_name: ''
+experiment_id: '912182730344410550'
+lifecycle_stage: active
+run_id: 38a467c9b99b49db8ca7f18c19a4ba94
+run_name: awesome-crane-138
+run_uuid: 38a467c9b99b49db8ca7f18c19a4ba94
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734009175213
+status: 4
+tags: []
+user_id: fdenolas

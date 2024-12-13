@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/fdenolas/OneDrive - Vrije Universiteit Brussel/Uni/[06]Code/[09]AE_acceleration/damage_prediction_AE/logs/mlflow/912182730344410550/570494ea756d49b7a68f52a4f8de220b/artifacts
+end_time: 1734009222347
+entry_point_name: ''
+experiment_id: '912182730344410550'
+lifecycle_stage: active
+run_id: 570494ea756d49b7a68f52a4f8de220b
+run_name: masked-newt-341
+run_uuid: 570494ea756d49b7a68f52a4f8de220b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734009215064
+status: 4
+tags: []
+user_id: fdenolas
