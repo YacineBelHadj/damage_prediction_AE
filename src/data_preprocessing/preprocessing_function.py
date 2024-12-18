@@ -1,4 +1,4 @@
-from torchaudio.transforms import Spectrogram
+from torchaudio.transforms import Spectrogram, Resample
 import torch
 from torch import nn
 
@@ -26,15 +26,30 @@ class Welch(nn.Module):
     def __str__(self):
         return f"Welch(n_fft={self.n_fft}, average={self.average})"
     
-
+class DownSample(nn.Module):
+    def __init__(self, fs_in: float, fs_out: float,**kwargs):
+        super().__init__()
+        if fs_out >= fs_in:
+            raise ValueError("Output sampling rate must be less than input sampling rate")
+        self.fs_in = fs_in
+        self.fs_out = fs_out
+        self.resample = Resample(fs_in,fs_out,**kwargs)
+        
+    def forward(self,x):
+        if x.ndim == 1:
+            x = x.unsqueeze(0)
+        return self.resample(x)
     
 class RollingAverage(nn.Module):
-    def __init__(self, window_size:int,stride_ratio:float=0.8):
+    def __init__(self, window_size:int,stride_ratio:float=0.5):
         super(RollingAverage, self).__init__()
         self.window_size = window_size
         self.stride_ratio = stride_ratio
     def forward(self, x):
-        return torch.nn.functional.avg_pool1d(x.unsqueeze(0), kernel_size=self.window_size, stride=int(self.window_size*self.stride_ratio)).squeeze(0)
+        x = x - torch.mean(x, dim=-1, keepdim=True)
+        x =  torch.nn.functional.avg_pool1d(x.unsqueeze(0), kernel_size=self.window_size, stride=int(self.window_size*self.stride_ratio)).squeeze(0)
+        # compute the derivative of the rolling average
+        return torch.diff(x, dim=-1)
     def __str__(self):
         # return a description of the module and its parameters
         return f"RollingAverage(window_size={self.window_size}, stride_ratio={self.stride_ratio})"

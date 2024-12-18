@@ -16,6 +16,7 @@ class CutPSD(Module):
         self.freq_axis = freq_axis  
         self.freq_range = freq_range
         self.freq_mask = (self.freq_axis >= self.freq_range[0]) & (self.freq_axis <= self.freq_range[1])
+        self.freq_axis_masked = self.freq_axis[self.freq_mask]
         
     def forward(self, psd:torch.Tensor):
         if psd.ndim == 1:
@@ -77,15 +78,33 @@ class NormLayer(Module):
         else:
             return torch.tensor(val, dtype=self.dtypes)
         
+class StandardScaler(Module):
+    def __init__(self, mean=None, std=None, denormalize=False):
+        super().__init__()
+        self.mean = mean
+        self.std = std
+        self.denormalize = denormalize
+        self.forward_func = {False: self.forward_norm, True: self.forward_denorm}
+        self.forward = self.forward_func[self.denormalize]
+
+    def forward_norm(self, x):
+        return (x - self.mean) / (self.std )
+
+    def forward_denorm(self, x):
+        return x * (self.std) + self.mean
+    
+    def forward(self, x):
+        return self.forward(x)
         
 class UnsqueezeLayer(Module):
-    def __init__(self, dim=1):
-        super().__init__()
+    def __init__(self, dim):
+        super(UnsqueezeLayer, self).__init__()
         self.dim = dim
 
     def forward(self, x):
-        x = x.unsqueeze(self.dim)
-        return x
+        if x.dim() > self.dim:
+            return x
+        return x.unsqueeze(self.dim)
 
 class SqueezeLayer(Module):
     def __init__(self, dim=1):
