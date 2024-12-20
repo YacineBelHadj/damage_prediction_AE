@@ -270,6 +270,11 @@ class MultiModalAutoEncoder(nn.Module):
     def __init__(self, input_dims: dict, separated_layer: list[int], shared_layer: list[int], 
                  normalization_values: dict, activation_str: str = 'relu'):
         super().__init__()
+        self.input_dims = input_dims
+        self.separated_layer = separated_layer
+        self.shared_layer = shared_layer
+        self.normalization_values = normalization_values
+        self.activation_str = activation_str
         self.encoder = MultiEncoder(
             input_dims=input_dims, 
             separated_layer=separated_layer, 
@@ -297,23 +302,6 @@ class MultiModalAutoEncoder(nn.Module):
 import torch
 from torch import nn
 
-def build_layers(input_dim, hidden_dims, activation_fn, use_norm=True, norm_layer=None, include_last_activation=True):
-    """
-    Utility function to build sequential layers with Linear, BatchNorm, and Activation.
-    """
-    layers = [norm_layer] if norm_layer else []
-    hidden_dims = [input_dim] + hidden_dims
-    
-    for i in range(len(hidden_dims) - 1):
-        layers.append(nn.Linear(hidden_dims[i], hidden_dims[i + 1]))
-        
-        # Add BatchNorm and activation except for the last layer if specified
-        if i < len(hidden_dims) - 2 or include_last_activation:
-            if use_norm:
-                layers.append(nn.BatchNorm1d(hidden_dims[i + 1]))
-            layers.append(activation_fn)
-    
-    return nn.Sequential(*layers)
 
 
 

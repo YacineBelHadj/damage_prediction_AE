@@ -2,6 +2,7 @@
 raw='/media/owilab/7759343A6EC07E1C'
 processed='@format /{env[HOME]}/data/processed'
 mlflow='@format /{env[HOME]}/logs/mlflow'
+tensorboard='@format /{env[HOME]}/logs/tensorboard'
 scada='@format /{env[HOME]}/data/raw'
 [NORTHER]
 fleet_leader = ["NRTC01", "NRTC03", "NRTH01", "NRTF03", "NRTJ03"]

@@ -48,8 +48,7 @@ class RollingAverage(nn.Module):
     def forward(self, x):
         x = x - torch.mean(x, dim=-1, keepdim=True)
         x =  torch.nn.functional.avg_pool1d(x.unsqueeze(0), kernel_size=self.window_size, stride=int(self.window_size*self.stride_ratio)).squeeze(0)
-        # compute the derivative of the rolling average
-        return torch.diff(x, dim=-1)
+        return x 
     def __str__(self):
         # return a description of the module and its parameters
         return f"RollingAverage(window_size={self.window_size}, stride_ratio={self.stride_ratio})"
