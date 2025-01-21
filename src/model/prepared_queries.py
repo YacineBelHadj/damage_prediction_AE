@@ -1,6 +1,7 @@
-view_melt_welch_only = """
-CREATE VIEW IF NOT EXISTS melted_view AS
-WITH melted AS (
+create_melt_welch_only = """
+DROP TABLE IF EXISTS melted;
+
+CREATE TABLE melted AS  
     SELECT 
         id,
         "timestamp",
@@ -23,8 +24,7 @@ WITH melted AS (
         turbine_name,
         'Z' AS axis,
         Welch_Z AS Welch
-    FROM processed_data
-)
+    FROM processed_data;
 SELECT 
     ROW_NUMBER() OVER (ORDER BY id, axis) AS unique_id,
     id,
@@ -120,6 +120,20 @@ def welch1_scada1(not_null: list[str]= ['welch.Welch', 'scada.DEM']):
         res += f" AND {column} IS NOT NULL"
 
     return res
+
+add_key_to_scada="""
+ALTER TABLE scada ADD COLUMN id INTEGER;
+
+WITH ranked_rows AS (
+    SELECT 
+        rowid AS row_id, 
+        ROW_NUMBER() OVER () AS id_value 
+    FROM scada
+)
+UPDATE scada
+SET id = (SELECT id_value FROM ranked_rows WHERE rowid = ranked_rows.row_id);
+
+"""
 
 do_nothing="""
 SELECT 1 AS placeholder;

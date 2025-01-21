@@ -9,3 +9,6 @@ __pycache__
 *.csv
 .cache
 database_path.db
+*.ckpt
+lightning_logs/*
+*/.casedefinitions.toml

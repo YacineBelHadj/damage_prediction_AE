@@ -17,7 +17,7 @@ root = pyrootutils.setup_root(
 os.environ["HOME"] = root.absolute().as_posix()
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
-    settings_files=['config/settings.toml', 'config/.secrets.toml','config/structuralstate.toml'],
+    settings_files=['config/settings.toml', 'config/.secrets.toml','config/.casedefinition.toml'],
     root_path=root
 )
 

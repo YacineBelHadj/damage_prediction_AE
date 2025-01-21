@@ -1,0 +1,230 @@
+[[case_definitions]]
+name = "Parked - Rotor Locked, Windspeed < Cutin"
+parent_class = ["Standstill", "Region 1", "No Power Production", "DLC 7.2", "Constant SCADA"]
+description = "Turbine parked, with rotor locked and windspeed less than cutin"
+color = "limegreen"
+
+  [case_definitions.criteria]
+  power = [-200, 1]
+  pitch = [90, 92]
+  rpm = [0, 0.5]
+  windspeed = [0, 5.5]
+
+[[case_definitions]]
+name = "Parked - Rotor Locked, Windspeed > Cutin"
+parent_class = ["Standstill", "Undefined Region", "No Power Production", "DLC 7.2", "Constant SCADA"]
+description = "Turbine parked, with rotor locked and windspeed greater than cutin"
+color = "palegreen"
+
+  [case_definitions.criteria]
+  power = [-200, 1]
+  pitch = [90, 92]
+  rpm = [0, 0.5]
+  windspeed = [5.5, 100]
+
+[[case_definitions]]
+name = "Parked - Pitch 78 Deg, Windspeed < Cutin"
+parent_class = ["Standstill", "Region 1", "No Power Production", "DLC 6.4", "Constant SCADA"]
+description = "Turbine parked, pitched at 78 deg with windspeed less than cutin"
+color = "chartreuse"
+
+  [case_definitions.criteria]
+  power = [-200, 1]
+  pitch = [77, 90]
+  rpm = [0, 2]
+  windspeed = [0, 5.5]
+
+[[case_definitions]]
+name = "Parked - Pitch 78 Deg, Windspeed > Cutin"
+parent_class = ["Standstill", "Undefined Region", "No Power Production", "DLC 6.4", "Constant SCADA"]
+description = "Turbine parked, pitched at 78 deg with windspeed greater than cutin"
+color = "olive"
+
+  [case_definitions.criteria]
+  power = [-200, 1]
+  pitch = [77, 90]
+  rpm = [0, 2]
+  windspeed = [5.5, 100]
+
+[[case_definitions]]
+name = "Parked Transitions, Windspeed < Cutin"
+parent_class = ["Standstill", "Region 1", "No Power Production", "DLC 6.4", "Non Constant SCADA"]
+description = "Turbine transitions from parked to idle or the opposite with windspeed less than cutin"
+color = "orange"
+
+  [case_definitions.criteria]
+  pitch = [30, 77]
+  rpm = [0, 2]
+  std_pitch = [2, 100]
+  windspeed = [0, 5.5]
+
+[[case_definitions]]
+name = "Parked Transitions, Windspeed > Cutin"
+parent_class = ["Operational", "Undefined Region", "No Power Production", "DLC 3.1 - 4.1", "Non Constant SCADA"]
+description = "Turbine transitions from parked to idle or the opposite with windspeed greater than cutin"
+color = "orangered"
+
+  [case_definitions.criteria]
+  pitch = [30, 77]
+  rpm = [0, 2]
+  std_pitch = [2, 100]
+  windspeed = [5.5, 100]
+
+[[case_definitions]]
+name = "Idling - Pitched in"
+parent_class = ["Operational", "Region 1", "No Power Production", "DLC 3.1 - 4.1", "Constant SCADA"]
+description = "Turbine is idle due to low windspeed"
+color = "mediumseagreen"
+
+  [case_definitions.criteria]
+  pitch = [19, 21]
+  rpm = [0, 2]
+  windspeed = [0, 6.5]
+  std_pitch = [0, 2]
+
+[[case_definitions]]
+name = "Rated Power"
+parent_class = ["Operational", "Region 3", "Power Production", "DLC 1.2", "Constant SCADA"]
+description = "Wind turbine at Max Power Output"
+color = "firebrick"
+
+  [case_definitions.criteria]
+  power = [8395, 8450]
+  std_pitch = [0, 10]
+
+[[case_definitions]]
+name = "Highwind"
+parent_class = ["Operational", "Region 4", "Power Production", "DLC 1.2", "Non Constant SCADA"]
+description = "Wind turbine producing less power due to high windspeed"
+color = "purple"
+
+  [case_definitions.criteria]
+  windspeed = [25, 100]
+  pitch = [20, 60]
+  power = [2000, 8400]
+
+[[case_definitions]]
+name = "Cutin, Power < 0"
+parent_class = ["Operational", "Region 2", "No Power Production", "DLC 3.1 - 4.1", "Non Constant SCADA"]
+description = "Turbine rotating up to 6.5RPM"
+color = "turquoise"
+
+  [case_definitions.criteria]
+  rpm = [1.5, 6.3]
+  pitch = [-5, 30]
+  std_pitch = [1, 14]
+  power = [-200, 0]
+
+[[case_definitions]]
+name = "Cutin, Power > 0"
+parent_class = ["Operational", "Region 2", "Power Production", "DLC 3.1 - 4.1", "Non Constant SCADA"]
+description = "Turbine rotating up to 6.5RPM"
+color = "teal"
+
+  [case_definitions.criteria]
+  rpm = [1.5, 6.3]
+  pitch = [-5, 30]
+  std_pitch = [1, 14]
+  power = [0, 4000]
+
+[[case_definitions]]
+name = "RPM = 6.5"
+parent_class = ["Operational", "Region 2", "Power Production", "DLC 1.2", "Non Constant SCADA"]
+description = "Turbine rotating at 6.5RPM"
+color = "gold"
+
+  [case_definitions.criteria]
+  rpm = [6.3, 6.6]
+  pitch = [-5, 9]
+  std_pitch = [0, 5]
+
+[[case_definitions]]
+name = "RPM, Power < Max"
+parent_class = ["Operational", "Region 2", "Power Production", "DLC 1.2", "Non Constant SCADA"]
+description = "Turbine speeding up to rated RPM"
+color = "tomato"
+
+  [case_definitions.criteria]
+  rpm = [6.6, 10.48]
+  pitch = [-5, 1]
+  std_pitch = [0, 5]
+
+[[case_definitions]]
+name = "Rated RPM"
+parent_class = ["Operational", "Region 2", "Power Production", "DLC 1.2", "Non Constant SCADA"]
+description = "Rated RPM, Power still not rated"
+color = "peru"
+
+  [case_definitions.criteria]
+  rpm = [10.48, 10.6]
+  power = [2000, 8395]
+  pitch = [-5, 2]
+  std_pitch = [0, 5]
+  windspeed = [0, 13]
+
+[[case_definitions]]
+name = "Derated > 7900 kW"
+parent_class = ["Operational", "Region 3", "Power Production", "DLC 1.2", "Constant SCADA"]
+description = "Derated operation at near rated power levels"
+color = "dodgerblue"
+
+  [case_definitions.criteria]
+  std_pitch = [0, 7]
+  std_power = [0, 100]
+  power = [7900, 8395]
+
+[[case_definitions]]
+name = "Derated Transitions > 7900 kW"
+parent_class = ["Operational", "Region 3", "Power Production", "DLC 1.2", "Non Constant SCADA"]
+description = "Transitions between different derated conditions and normal operation to derated operation, at near rated power levels"
+color = "lightsteelblue"
+
+  [case_definitions.criteria]
+  std_pitch = [0, 12]
+  power = [7900, 8395]
+
+[[case_definitions]]
+name = "Derated"
+parent_class = ["Derated", "Undefined Region", "Power Production", "Undefined DLC", "Constant SCADA"]
+description = "Derated operation at mid power levels"
+color = "steelblue"
+
+  [case_definitions.criteria]
+  std_pitch = [0, 7]
+  std_power = [0, 100]
+  power = [500, 8395]
+
+[[case_definitions]]
+name = "Derated Transitions"
+parent_class = ["Transition", "Undefined Region", "Power Production", "Undefined DLC", "Non Constant SCADA"]
+description = "Transitions between different derated conditions and normal operation to derated operation, at mid power levels"
+color = "lightblue"
+
+  [case_definitions.criteria]
+  std_pitch = [0, 12]
+  power = [500, 8395]
+
+[[case_definitions]]
+name = "Start - Stop Transitions / Unclassified"
+parent_class = ["Transition", "Undefined Region", "Power Production", "DLC 3.1 - 4.1", "Non Constant SCADA"]
+description = "Events such as rotor stops and sudden rotor starts and unclassified points"
+color = "gray"
+
+  [case_definitions.criteria]
+  windspeed = [-100, 100]
+  pitch = [-200, 200]
+  std_pitch = [-200, 200]
+  power = [-1000, 10000]
+  rpm = [-200, 200]
+  std_power = [-1000, 10000]
+
+[[case_definitions]]
+name = "Missing SCADA"
+parent_class = ["Parked", "Undefined Region", "Power Production", "DLC 3.1 - 4.1", "Non Constant SCADA"]
+description = "Events such as rotor stops and sudden rotor starts and unclassified points"
+color = "gray"
+  [case_definitions.criteria]
+  windspeed = false
+
+
+
