@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS processed_data (
     Mean_Z DOUBLE
 )
 """
+
 DELETE_PROCESSED_DATA = """
 DELETE FROM processed_data
 """

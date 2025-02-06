@@ -84,6 +84,44 @@ WHERE
     AND pd.Welch_Z IS NOT NULL 
     AND sc.DEM5_TP_SG_LAT014_Mtn IS NOT NULL;
 """
+
+
+welch_all_scada_wo_dem= """
+DROP TABLE IF EXISTS processed_scada;
+
+CREATE TABLE processed_scada AS
+SELECT 
+    pd.id,
+    pd.timestamp,
+    pd.turbine_name,
+    pd.Welch_X,
+    pd.Welch_Y,
+    pd.Welch_Z,
+    sc.mean_windspeed,
+    sc.mean_power,
+    sc.mean_pitch,
+    sc.mean_rpm,
+    sc.caseID
+FROM 
+    processed_data pd
+LEFT JOIN 
+    scada sc
+ON 
+    pd.timestamp = sc.timestamp
+    AND pd.turbine_name = sc.turbine_name
+WHERE 
+    pd.Welch_X IS NOT NULL 
+    AND pd.Welch_Y IS NOT NULL 
+    AND pd.Welch_Z IS NOT NULL 
+    AND sc.mean_windspeed is not NULL
+    AND sc.mean_power is not NULL
+    AND sc.mean_pitch is not NULL
+    AND sc.mean_pitch is not NULL
+    AND sc.mean_rpm is not NULL
+    AND sc.caseID is not NULL
+"""
+
+
 def welch1_scada1(not_null: list[str]= ['welch.Welch', 'scada.DEM']):
     # Base query
     res = """

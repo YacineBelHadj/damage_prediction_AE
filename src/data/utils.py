@@ -111,6 +111,7 @@ def get_statistic(
         query += f" WHERE timestamp > '{timestamp_range[0]}' AND timestamp < '{timestamp_range[1]}'"
     if add_condition:
         query += f" AND {add_condition}"
+    print("Query:", query)
     try:
         # Execute query and load data
         df = pd.read_sql_query(query, conn)
